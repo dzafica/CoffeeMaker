@@ -1,19 +1,111 @@
 <html>
+
 <head>
     <title>Coffee Maker</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        /* Add these styles */
+        #levelSelection {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+        }
+
+        #startButton {
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 20px;
+            background-color: #9e1010;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 200px;
+            text-align: center;
+        }
+
+        #startButton:hover {
+            background-color: #c91212;
+        }
+
+        .level-btn {
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 20px;
+            background-color: #9e1010;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 200px;
+            text-align: center;
+        }
+
+        .level-btn:hover {
+            background-color: #c91212;
+        }
+
+        #startScreen {
+            display: none;
+            /* Hide start screen by default */
+        }
+
+        /*timer*/
+        #gameTimer {
+            position: absolute;
+            /* Adjust these values to position the timer */
+            left: 1280px;
+            top: 250px;
+            z-index: 15;
+            /* Above the canvas but below menus */
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid #9e1010;
+        }
+
+        #timerDisplay {
+            color: white;
+            font-size: 90px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="gameTimer">
+        <span id="timerDisplay">00:00</span>
+    </div>
     <div class="wrapper-center">
-        <div id="bricks">
-            <div id="startScreen">
-                <button id="startButton">START</button>
-                <div id="countdown"></div>
+        <div class="coffee-machine-container">
+            <img src="img/coffeMachine.png" class="coffee-machine-bg" alt="Coffee Maker">
+            <img src="img/cup.png" id="coffeeCup" alt="Coffee Cup">
+            <div id="bricks">
+                <div id="levelSelection">
+                    <h2 style="color: white; margin-bottom: 30px;">SELECT DIFFICULTY</h2>
+                    <button class="level-btn" data-level="easy">EASY</button>
+                    <button class="level-btn" data-level="medium">MEDIUM</button>
+                    <button class="level-btn" data-level="hard">HARD</button>
+                </div>
+                <div id="startScreen">
+                    <button id="startButton">START</button>
+                    <div id="countdown"></div>
+                </div>
+                <canvas id="myCanvas" width="480" height="320"></canvas>
             </div>
-            <canvas id="myCanvas" width="480" height="320"></canvas>
-            <script src="game.js"></script>
+
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/game.js"></script>
 </body>
+
 </html>
