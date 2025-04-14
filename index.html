@@ -3,6 +3,7 @@
 <head>
     <title>Coffee Maker</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="./img/favIcon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <style>
         /* Add these styles */
@@ -22,7 +23,7 @@
             padding: 15px 30px;
             margin: 10px;
             font-size: 20px;
-            background-color: #9e1010;
+            background-color: #2a2a2a;
             color: white;
             border: none;
             border-radius: 5px;
@@ -32,14 +33,14 @@
         }
 
         #startButton:hover {
-            background-color: #c91212;
+            background-color: #191919;
         }
 
         .level-btn {
             padding: 15px 30px;
             margin: 10px;
             font-size: 20px;
-            background-color: #9e1010;
+            background-color: #2a2a2a;
             color: white;
             border: none;
             border-radius: 5px;
@@ -49,7 +50,11 @@
         }
 
         .level-btn:hover {
-            background-color: #c91212;
+            background-color: #1e1e1e;
+        }
+
+        #special:hover {
+            background-color: rgb(72, 0, 72) !important;
         }
 
         #startScreen {
@@ -61,19 +66,23 @@
         #gameTimer {
             position: absolute;
             /* Adjust these values to position the timer */
-            left: 1280px;
-            top: 250px;
+
+            left: 43%;
+            top: 19.1%;
+            width: 270px;
             z-index: 15;
             /* Above the canvas but below menus */
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
+            background-color: rgb(14, 14, 14, 1);
+            /*padding: 10px 20px;*/
             border-radius: 5px;
-            border: 2px solid #9e1010;
+            border: 2px solid #2a2a2a;
         }
 
         #timerDisplay {
+            margin-left: 30px;
+            text-align: center;
             color: white;
-            font-size: 90px;
+            font-size: 80px;
             font-family: Arial, sans-serif;
             font-weight: bold;
         }
@@ -86,26 +95,54 @@
     </div>
     <div class="wrapper-center">
         <div class="coffee-machine-container">
-            <img src="img/coffeMachine.png" class="coffee-machine-bg" alt="Coffee Maker">
-            <img src="img/cup.png" id="coffeeCup" alt="Coffee Cup">
+            <img src="img/CoffeeMachine.png" class="coffee-machine-bg" alt="Coffee Maker">
+            <!--<img src="img/cup.png" id="coffeeCup" alt="Coffee Cup">-->
             <div id="bricks">
                 <div id="levelSelection">
                     <h2 style="color: white; margin-bottom: 30px;">SELECT DIFFICULTY</h2>
                     <button class="level-btn" data-level="easy">EASY</button>
                     <button class="level-btn" data-level="medium">MEDIUM</button>
                     <button class="level-btn" data-level="hard">HARD</button>
+                    <button class="level-btn" id="special" data-level="special">PLAY SPECIAL</button>
                 </div>
                 <div id="startScreen">
                     <button id="startButton">START</button>
                     <div id="countdown"></div>
                 </div>
-                <canvas id="myCanvas" width="480" height="320"></canvas>
+                <canvas id="myCanvas" width="693" height="500"></canvas>
+                
             </div>
-
+            <button id="credits" style="height: 2px; width: 2px;">.</button>
         </div>
     </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/game.js"></script>
+
+    <script>
+        // Add event listener to the "C" in "Cat Adventure"
+        document.getElementById('credits').addEventListener('click', function () {
+            Swal.fire({
+                title: 'Credits time!',
+                html: `
+                    <p>Game developed by <strong>Anida Džafić</strong></p>
+                `,
+                icon: 'info',
+                confirmButtonText: 'Close',
+                confirmButtonColor: '#1e3620', // Customize the button color
+                backdrop: false, // Disable the backdrop
+                allowOutsideClick: true, // Allow closing the popup by clicking outside
+                allowEscapeKey: true, // Allow closing the popup with the Escape key
+                allowEnterKey: true, // Allow closing the popup with the Enter key
+                customClass: {
+                    popup: 'custom-swal-popup',
+                    confirmButton: 'custom-swal-confirm-button',
+                    icon: 'custom-swal-icon'
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
